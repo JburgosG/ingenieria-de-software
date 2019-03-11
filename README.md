@@ -1,7 +1,7 @@
 ## Proyecto UNI2 - Ingenieria de Software: 
-## Universidad Catolica de Colombia
+# Universidad Catolica de Colombia
 
-Jairo Burgos Guarin
-Gina Garzón Cifuentes
-Steven Arias Chavarro
-Ruben Cepesdes Santis
+Jairo Burgos Guarin<br/>
+Gina Garzón Cifuentes<br/>
+Steven Arias Chavarro<br/>
+Ruben Cepesdes Santis<br/>
