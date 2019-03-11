@@ -1,5 +1,5 @@
-# Proyecto UNI2 - Ingenieria de Software: 
-## Universidad Catolica de Colombia
+## Proyecto UNI2 - Ingenieria de Software: 
+### Universidad Catolica de Colombia
 
 Jairo Burgos Guarin<br/>
 Gina Garzón Cifuentes<br/>
