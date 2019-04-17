@@ -1,0 +1,139 @@
+.pt-profile {
+    width: 48px;
+    height: 48px;
+}
+
+.mt-trash {
+    margin-top: 2%;
+}
+
+.dialog {       
+    position: relative;    
+}
+
+.dialog-gallery {       
+    position: relative;
+    display: inline-block;
+}
+
+.close-thik {
+    color: #777;
+    font: 14px/100% arial, sans-serif;
+    position: absolute;
+    right: 5px;
+    text-decoration: none;
+    text-shadow: 0 1px 0 #fff;
+    top: 5px;
+}
+
+.close-thik:after {    
+    content: '✖';        
+}
+
+.close-thik-gallery {
+    color: #777;
+    font: 14px/100% arial, sans-serif;
+    position: absolute;
+    right: 0px;
+    text-decoration: none;
+    text-shadow: 0 1px 0 #fff;
+    top: 0px;
+}
+
+.close-thik-gallery:after {
+    color: #fff;
+    width: 15px;
+    height: 15px;
+    content: '✖';
+    font-size: 11px;
+    padding: 5px 6px;
+    background: rgba(16, 16, 16, 0.46);
+    border-radius: 100%;
+}
+
+.welcome {
+    font-size: 26px;
+    padding-top: 1%;
+}
+
+.st-profile {
+    width: 80px;
+    height: 80px;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.select2 {
+    width: 100% !important;
+}
+
+.title-header {
+    font-size: 16px;
+    color: #fff;
+    width: 120%;
+    margin-top: 7px;
+    padding: 12px 0px 0px 65px;
+}
+
+.img-event {
+    width: 400px;
+    height: 250px;
+}
+
+.mr-gallery {
+    margin-bottom: 2%;
+}
+
+/* Input File */
+.fileUpload {
+    position: relative;
+    overflow: hidden;
+}
+
+.fileUpload input.upload {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    opacity: 0;
+    height: 32px;
+    filter: alpha(opacity=0);
+}
+
+/* Jairo Burgos Guarin */
+::-webkit-scrollbar {
+    width: 10px;
+    background: #fff;
+}
+
+::-webkit-scrollbar-button {
+    width: 8px;
+    height: 0.1px;
+}
+
+::-webkit-scrollbar-track {
+    background: #fff;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+    background: -webkit-linear-gradient(top, #ddd, #ddd);
+    -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 225, .5),
+        inset 1px 0 0 rgba(255, 255, 255, .4),
+        inset 0 1px 2px rgba(255, 255, 255, .3);
+
+    border: thin solid #ddd;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: -webkit-linear-gradient(top, #ddd, #ddd);
+}
+
+/* Pseudo-clase */
+::-webkit-scrollbar-thumb:window-inactive {
+    background: rgba(255, 255, 255, .3);
+}
