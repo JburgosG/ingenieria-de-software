@@ -20,8 +20,6 @@
                         </span>
                     </a>
                     <ul class="dropdown-menu animated fadeInRight m-t-xs">
-                        <li><a href="{{ url('profile', encrypt(Auth::user()->id)) }}">Mi perfil</a></li>
-                        <li class="divider"></li>
                         <li>
                             <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                 Cerrar sesión
@@ -39,18 +37,6 @@
                     <span class="nav-label">Inicio</span>
                 </a>
             </li>
-            <li>
-                <a href="{{ url('/') }}">
-                    <i class="fa fa-calendar"></i>
-                    <span class="nav-label">Calendario</span>
-                </a>
-            </li>
-            <li>
-                <a href="{{ url('/') }}">
-                    <i class="fa fa-picture-o"></i>
-                    <span class="nav-label">Galeria</span>
-                </a>
-            </li>
         </ul>
     </div>
 </nav>
@@ -62,7 +48,7 @@
                 <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#">
                     <i class="fa fa-bars"></i>
                 </a>
-                <p class="title-header">Uni2</p>
+                <p class="title-header">Bienvenidos a Uni2</p>
             </div>
             <ul class="nav navbar-top-links navbar-right">
                 <li class="pull-right">
@@ -81,7 +67,7 @@
             <strong>U. Catolica de Colombia</strong>
         </div>
         <div>
-            <strong>©</strong> Uni2 {{ date('Y') }}
+            <strong>©</strong> Uni2 - {{ date('Y') }}
         </div>
     </div>
 </div>
