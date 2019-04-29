@@ -15,6 +15,13 @@ Auth::routes();
 Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('storage/{folder}/{path}', 'MainController@loadimage');
-
 Route::resource('users', 'UsersController');
+
+/* View */
+Route::get('profile/{id}', 'UsersController@show');
+
+/* Create Modules */
+Route::get('create_user', 'UsersController@create');
+
+Route::get('storage/{folder}/{path}', 'MainController@loadimage');
+Route::post('change-avatar', ['as' => 'change-avatar', 'uses' => 'UsersController@changeAvatar']);

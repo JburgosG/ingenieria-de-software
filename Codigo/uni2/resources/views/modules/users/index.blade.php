@@ -45,11 +45,11 @@
                                 <table class="footable table table-bordered" data-page-size="8" data-filter=#filter>
                                     <thead>
                                     <tr>
-                                        <th colspan="2">{{ trans('users.datatable_name') }}</th>
-                                        <th>{{ trans('users.datatable_email') }}</th>
-                                        <th>{{ trans('users.datatable_age') }}</th>
-                                        <th>{{ trans('users.datatable_group') }}</th>
-                                        <th>{{ trans('users.datatable_actions') }}</th>
+                                        <th colspan="2">Nombre</th>
+                                        <th>Correo Electrónico</th>
+                                        <th>Edad</th>
+                                        <th>Perfil</th>
+                                        <th>Acciones</th>
                                     </tr>
                                     </thead>
                                     <tbody>
