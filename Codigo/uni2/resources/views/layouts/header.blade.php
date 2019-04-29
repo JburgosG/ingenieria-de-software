@@ -37,6 +37,21 @@
                     <span class="nav-label">Inicio</span>
                 </a>
             </li>
+            <li>
+                <a href="{{ url('/') }}">
+                    <i class="fa fa-cogs"></i>
+                    <span class="nav-label">Administrador</span>
+                    <span class="fa arrow"></span>
+                </a>
+                <ul class="nav nav-second-level collapse">
+                    <li>
+                        <a href="{{ url('/users') }}">
+                            <i class="fa fa-users"></i>
+                            <span class="nav-label">Usuarios</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
         </ul>
     </div>
 </nav>

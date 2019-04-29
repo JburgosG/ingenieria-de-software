@@ -16,3 +16,5 @@ Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('storage/{folder}/{path}', 'MainController@loadimage');
+
+Route::resource('users', 'UsersController');
