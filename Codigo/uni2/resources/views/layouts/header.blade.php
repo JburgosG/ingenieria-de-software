@@ -39,6 +39,7 @@
                     <span class="nav-label">Inicio</span>
                 </a>
             </li>
+            @if(Auth::user()->group->id == 1)
             <li>
                 <a href="{{ url('/') }}">
                     <i class="fa fa-cogs"></i>
@@ -54,6 +55,7 @@
                     </li>
                 </ul>
             </li>
+            @endif
         </ul>
     </div>
 </nav>
