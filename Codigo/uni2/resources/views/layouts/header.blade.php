@@ -20,6 +20,8 @@
                         </span>
                     </a>
                     <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                        <li><a href="{{ url('profile', encrypt(Auth::user()->id)) }}">Mi perfil</a></li>
+                        <li class="divider"></li>
                         <li>
                             <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                 Cerrar sesión
@@ -37,6 +39,7 @@
                     <span class="nav-label">Inicio</span>
                 </a>
             </li>
+            @if(Auth::user()->group->id == 1)
             <li>
                 <a href="{{ url('/') }}">
                     <i class="fa fa-cogs"></i>
@@ -52,6 +55,7 @@
                     </li>
                 </ul>
             </li>
+            @endif
         </ul>
     </div>
 </nav>

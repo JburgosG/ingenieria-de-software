@@ -12,6 +12,7 @@
     <body class="md-skin fixed-sidebar fixed-nav">
         <input type="hidden" id="base_url" value="{{ url('/') }}">
         <input type="hidden" id="route" value="<?= URL::current() ?>">
+        <input type="hidden" id="exists" value="{{ route('exists') }}">
         <div id="wrapper">
             @yield('header')
         </div>

@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Teacher;
 use App\Student;
-use App\Attendant;
-use App\Relationship;
 use App\Student_Type;
 use App\Levels_education;
 use App\Identification_type;
@@ -77,8 +75,6 @@ class UsersController extends Controller {
             case 3:
                 $this->teacher($user_id, $data, $upd);
                 break;
-            case 4:
-            // Godfather
         }
     }
 
@@ -92,13 +88,7 @@ class UsersController extends Controller {
         $student->eps = $data['eps'];
         $student->user_id = $user_id;
         $student->type_id = $data['type_id'];
-        $student->level_education_id = $data['level_education_id'];
-        $student->price = isset($data['price']) ? $data['price'] : null;
-        $student->payment_day = isset($data['payment_day']) ? $data['payment_day'] : null;
-        if ($student->save()) {
-            $at = !empty($upd) ? $student->attendant->id : false;
-            $this->attendant($student->id, $data, $at);
-        }
+        $student->save();
     }
 
     public function teacher($user_id, $data, $upd) {
@@ -124,37 +114,7 @@ class UsersController extends Controller {
         $info['user_id'] = $user_id;
         $teacher->fill($info);
         $teacher->save();
-    }
-
-    public function attendant($student_id, $data, $upd) {
-        $info = array();
-
-        if ($upd) {
-            $attendant = Attendant::find($upd);
-        } else {
-            $attendant = new Attendant;
-        }
-
-        $fields = array(
-            'name' => 'name_a', 'email' => 'email_a',
-            'identification_type_id' => 'identification_type_a',
-            'address' => 'address_a', 'cell_phone' => 'cell_phone',
-            'home_phone' => 'home_phone', 'office_phone' => 'office_phone',
-            'identification' => 'identification_a', 'relationship_id' => 'relationship_id',
-        );
-
-        foreach ($fields as $key => $row) {
-            if (!empty($data[$row])) {
-                $info[$key] = $data[$row];
-            } else {
-                $info[$key] = null;
-            }
-        }
-
-        $info['student_id'] = $student_id;
-        $attendant->fill($info);
-        $attendant->save();
-    }
+    }    
 
     /* --------------------------------------------------------------------- */
 
@@ -256,8 +216,7 @@ class UsersController extends Controller {
     }
 
     public function general_data() {
-        return array(
-            'relarions' => Relationship::pluck('name', 'id'),
+        return array(            
             'student_type' => Student_Type::pluck('name', 'id'),
             'level_edu' => Levels_education::pluck('name', 'id'),
             'iden_type' => Identification_type::pluck('name', 'id'),
