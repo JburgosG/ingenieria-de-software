@@ -2,10 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Day;
 use App\User;
 use App\Subject;
+use App\Activity;
 use App\Student_Subject;
+use App\Document_Subject;
+use App\Schedule_Subject;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Redirect;
 
 class SubjectsController extends Controller
@@ -68,6 +75,32 @@ class SubjectsController extends Controller
         return Redirect::To($web)->withInput();
     }
 
+    public function show($id) {
+        $subject = Subject::find(decrypt($id));
+        if (!empty($subject)) {
+
+            $days = Day::all()->pluck('name', 'id');
+            $where = ['subject_id' => $subject->id];
+            $other = $this->dataRegister($subject->id);
+            $activities = Activity::where($where)->get();
+            $schedule = Schedule_Subject::where($where)->get();
+            $documents = Document_Subject::where($where)->get();
+
+            $data = array(
+                'days' => $days,
+                'subject' => $subject,
+                'schedule' => $schedule,
+                'documents' => $documents,
+                'activities' => $activities,
+                'students' => $other['students'],
+                'registered' => $other['registered']
+            );
+
+            return view('modules.subjects.view', $data);
+        }
+        return redirect('/subjects');
+    }
+
     public function general_data() {
         return array(
             'teachers' => User::where('group_id', 3)->pluck('name', 'id')
@@ -94,5 +127,22 @@ class SubjectsController extends Controller
         $data['slug'] = slug($name . '-' . $id);
         $sub->fill($data);
         $sub->save();
+    }
+
+    public function dataRegister($id) {
+        $not_in = array();
+        $where = ['group_id' => 2];
+        $registered = Student_Subject::where(['subject_id' => $id])->get();
+
+        if (!empty($registered)) {
+            foreach ($registered as $row) {
+                $not_in[] = $row->student_id;
+            }
+            $students = User::where($where)->whereNotIn('id', $not_in)->pluck('name', 'id');
+        } else {
+            $students = User::where($where)->pluck('name', 'id');
+        }
+
+        return ['students' => $students, 'registered' => $registered];
     }
 }
