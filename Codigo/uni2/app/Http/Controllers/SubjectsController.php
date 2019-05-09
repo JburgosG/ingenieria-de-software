@@ -101,6 +101,33 @@ class SubjectsController extends Controller
         return redirect('/subjects');
     }
 
+    /* --------------------------------------------------------------------- */
+
+    public function register(Request $request) {
+        $data = array_filter($request->all());
+        if (!empty($data)) {
+            $id = $data['subject_id'];
+            $subject = Subject::find(decrypt($id));
+            if (!empty($subject)) {
+
+                foreach ($data['students'] as $row) {
+                    $info = ['student_id' => $row, 'subject_id' => $subject->id];
+                    Student_Subject::insert($info);
+                }
+
+                $other = $this->dataRegister($subject->id);
+
+                $data = array(
+                    'subject' => $subject,
+                    'students' => $other['students'],
+                    'registered' => $other['registered']
+                );
+
+                return view('modules.subjects.partials.students', $data);
+            }
+        }
+    }
+
     public function general_data() {
         return array(
             'teachers' => User::where('group_id', 3)->pluck('name', 'id')

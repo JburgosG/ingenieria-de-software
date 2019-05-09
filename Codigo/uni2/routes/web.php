@@ -34,5 +34,6 @@ Route::get('storage/{folder}/{path}', 'MainController@loadimage');
 Route::post('/exists', ['as' => 'exists', 'uses' => 'MainController@exists']);
 Route::post('upload', ['as' => 'upload', 'uses' => 'SubjectsController@upload']);
 Route::post('schedule', ['as' => 'schedule', 'uses' => 'SubjectsController@schedule']);
+Route::post('register', ['as' => 'register', 'uses' => 'SubjectsController@register']);
 Route::post('change-pass', ['as' => 'change-pass', 'uses' => 'UsersController@changePassword']);
 Route::post('change-avatar', ['as' => 'change-avatar', 'uses' => 'UsersController@changeAvatar']);
