@@ -53,6 +53,12 @@
                             <span class="nav-label">Usuarios</span>
                         </a>
                     </li>
+                    <li>
+                        <a href="{{ url('/subjects') }}">
+                            <i class="fa fa-book"></i>
+                            <span class="nav-label">Asignaturas</span>
+                        </a>
+                    </li>
                 </ul>
             </li>
             @endif

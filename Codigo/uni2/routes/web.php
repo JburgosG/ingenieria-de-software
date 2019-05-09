@@ -16,12 +16,18 @@ Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('users', 'UsersController');
+Route::resource('subject', 'SubjectsController');
+
+/* Modules */
+Route::get('subjects', 'SubjectsController@index');
 
 /* View */
 Route::get('profile/{id}', 'UsersController@show');
+Route::get('view_subject/{id}', 'SubjectsController@show');
 
 /* Create Modules */
 Route::get('create_user', 'UsersController@create');
+Route::get('create_subject', 'SubjectsController@create');
 
 Route::get('storage/{folder}/{path}', 'MainController@loadimage');
 Route::post('/exists', ['as' => 'exists', 'uses' => 'MainController@exists']);
