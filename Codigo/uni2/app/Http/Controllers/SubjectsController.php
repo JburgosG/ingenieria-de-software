@@ -128,6 +128,17 @@ class SubjectsController extends Controller
         }
     }
 
+    public function unregistration($student_id, $key) {
+        if ($student_id && $key) {
+            $subject_id = decrypt($key);
+            $where = [
+                'student_id' => $student_id,
+                'subject_id' => $subject_id,
+            ];
+            return Student_Subject::where($where)->delete();
+        }
+    }
+
     public function general_data() {
         return array(
             'teachers' => User::where('group_id', 3)->pluck('name', 'id')
