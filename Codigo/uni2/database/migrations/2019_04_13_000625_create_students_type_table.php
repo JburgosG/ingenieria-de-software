@@ -20,9 +20,14 @@ class CreateStudentsTypeTable extends Migration {
         });
 
         $types = array(
-            array('name' => 'CIL', 'description' => 'Centro Internacional de Lideres'),
-            array('name' => 'EFA', 'description' => 'Escuela de Formación Artistica'),
-            array('name' => 'PE', 'description' => 'Puntos de Encuentro')
+            array(
+                'name' => 'Pregrado', 
+                'description' => 'Estudios superiores hasta el título de grado.'
+            ),
+            array(
+                'name' => 'Posgrado', 
+                'description' => 'Corresponde al ciclo de estudios de especialización'
+            )
         );
 
         Student_Type::insert($types);

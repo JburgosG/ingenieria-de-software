@@ -256,8 +256,7 @@ class UsersController extends Controller {
     }
 
     public function general_data() {
-        return array(
-            'relarions' => Relationship::pluck('name', 'id'),
+        return array(            
             'student_type' => Student_Type::pluck('name', 'id'),
             'level_edu' => Levels_education::pluck('name', 'id'),
             'iden_type' => Identification_type::pluck('name', 'id'),

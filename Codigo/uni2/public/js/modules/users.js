@@ -9,37 +9,12 @@ $(function () {
 
     var rules = {
         rules: {
-            name_a:{
-                maxlength: 190
-            },
             name:{
                 maxlength: 190
             },
             email: {
                 email: true,
                 maxlength: 190
-            },
-            email_a: {
-                email: true,
-                maxlength: 190
-            },
-            home_phone: {
-                maxlength: 10,
-                minlength: 7,
-                number: true,
-                digits: true
-            },
-            office_phone: {
-                maxlength: 10,
-                minlength: 7,
-                number: true,
-                digits: true
-            },
-            cell_phone: {
-                maxlength: 10,
-                minlength: 7,
-                number: true,
-                digits: true
             },
             phone: {
                 maxlength: 10,
@@ -55,9 +30,6 @@ $(function () {
                 equalTo: "#password"
             },
             address:{
-                maxlength: 190
-            },
-            address_a:{
                 maxlength: 190
             },
             identification:{
@@ -77,9 +49,6 @@ $(function () {
 
     $('#form_add_user').validate({
         rules: {
-            name_a:{
-                maxlength: 190
-            },
             name:{
                 maxlength: 190
             },
@@ -97,28 +66,6 @@ $(function () {
                     }
                 }
             },
-            email_a: {
-                email: true,
-                maxlength: 190
-            },
-            home_phone: {
-                maxlength: 10,
-                minlength: 7,
-                number: true,
-                digits: true
-            },
-            office_phone: {
-                maxlength: 10,
-                minlength: 7,
-                number: true,
-                digits: true
-            },
-            cell_phone: {
-                maxlength: 10,
-                minlength: 7,
-                number: true,
-                digits: true
-            },
             phone: {
                 maxlength: 10,
                 minlength: 7,
@@ -133,9 +80,6 @@ $(function () {
                 equalTo: "#password"
             },
             address:{
-                maxlength: 190
-            },
-            address_a:{
                 maxlength: 190
             },
             identification:{
