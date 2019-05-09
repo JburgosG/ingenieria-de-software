@@ -20,6 +20,8 @@
                         </span>
                     </a>
                     <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                        <li><a href="{{ url('profile', encrypt(Auth::user()->id)) }}">Mi perfil</a></li>
+                        <li class="divider"></li>
                         <li>
                             <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                 Cerrar sesión
