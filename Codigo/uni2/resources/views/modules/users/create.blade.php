@@ -30,8 +30,7 @@
                         <option selected value="">Seleccionar</option>
                         <option value="admin">Administrador</option>
                         <option value="student">Estudiante</option>
-                        <option value="teacher">Profesor</option>
-                        <option value="godfather">Padrino</option>
+                        <option value="teacher">Profesor</option>                        
                     </select>
                 </div>
             </div>

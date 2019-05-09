@@ -24,4 +24,5 @@ Route::get('profile/{id}', 'UsersController@show');
 Route::get('create_user', 'UsersController@create');
 
 Route::get('storage/{folder}/{path}', 'MainController@loadimage');
+Route::post('/exists', ['as' => 'exists', 'uses' => 'MainController@exists']);
 Route::post('change-avatar', ['as' => 'change-avatar', 'uses' => 'UsersController@changeAvatar']);
