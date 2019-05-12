@@ -139,10 +139,45 @@ class SubjectsController extends Controller
         }
     }
 
+    public function schedule(Request $request) {
+        $data = array_filter($request->all());        
+        if (!empty($data)) {
+            $id = $data['subject_id'];
+            $subject = decrypt($id);
+            $sub = ['subject_id' => $subject];            
+            Schedule_Subject::where($sub)->delete($subject);            
+            foreach ($data['day_id'] as $key => $val) {
+                if (!empty($val)) {
+                    $schedule = new Schedule_Subject;
+                    $other = [
+                        'end_Time' => $data['end'][$key],
+                        'day_id' => $data['day_id'][$key],
+                        'start_Time' => $data['start'][$key]
+                    ];
+                    $schedule->fill(array_merge($sub, $other));
+                    $schedule->save();
+                }
+            }
+
+            $msg = 'created';
+            $state = 'success';
+            $web = '/view_subject/' . $id;
+
+            _notification($state, $msg, 'Horario');
+            return Redirect::To($web)->withInput();
+        }
+    }
+
     public function general_data() {
         return array(
             'teachers' => User::where('group_id', 3)->pluck('name', 'id')
         );
+    }
+
+    public function addDays() {
+        $num = rand(0, 100);
+        $days = Day::all()->pluck('name', 'id');
+        return view('modules.subjects.partials.schedule', compact('days', 'num'));
     }
 
     public function prepareData($data) {

@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Schedule_Subject extends Model
 {
+    public $timestamps = true;
     protected $table = 'schedules_subjects';
 
     protected $fillable = [

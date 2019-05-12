@@ -28,6 +28,7 @@ Route::get('view_subject/{id}', 'SubjectsController@show');
 
 /* Create Modules */
 Route::get('create_user', 'UsersController@create');
+Route::post('addDays', 'SubjectsController@addDays');
 Route::get('create_subject', 'SubjectsController@create');
 
 Route::get('storage/{folder}/{path}', 'MainController@loadimage');
