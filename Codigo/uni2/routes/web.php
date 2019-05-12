@@ -30,6 +30,7 @@ Route::get('view_subject/{id}', 'SubjectsController@show');
 
 /* Create Modules */
 Route::get('create_user', 'UsersController@create');
+Route::get('create_event', 'EventsController@create');
 Route::get('create_subject', 'SubjectsController@create');
 
 /* Functions General */
