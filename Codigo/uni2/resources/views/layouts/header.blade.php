@@ -59,6 +59,12 @@
                             <span class="nav-label">Asignaturas</span>
                         </a>
                     </li>
+                    <li>
+                        <a href="{{ url('/events') }}">
+                            <i class="fa fa-newspaper-o"></i>
+                            <span class="nav-label">Actividades</span>
+                        </a>
+                    </li>
                 </ul>
             </li>
             @endif
