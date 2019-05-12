@@ -16,10 +16,12 @@ Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('users', 'UsersController');
+Route::resource('event', 'EventsController');
 Route::resource('subject', 'SubjectsController');
 Route::resource('activity', 'ActivitiesController');
 
 /* Modules */
+Route::get('events', 'EventsController@index');
 Route::get('subjects', 'SubjectsController@index');
 
 /* View */
