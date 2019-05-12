@@ -93,6 +93,14 @@ class EventsController extends Controller
         return Redirect::To($web)->withInput();
     }
 
+    public function destroy($id) {
+        $event = Events::find($id);
+        $path = storage_path('app/');
+
+        File::delete($path . $event->image);
+        echo (Events::destroy($id)) ? true : false;
+    }
+
     /* --------------------------------------------------------------------- */
 
     public function generalData() {
