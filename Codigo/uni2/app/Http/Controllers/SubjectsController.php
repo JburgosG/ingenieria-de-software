@@ -139,6 +139,35 @@ class SubjectsController extends Controller
         }
     }
 
+    public function upload(Request $request) {
+        $data = array_filter($request->all());
+
+        if (!empty($data['file'])) {
+            $id = decrypt($data['subject_id']);
+            $files = $request->file('file');
+            foreach ($files as $file) {
+                $documents = new Document_Subject();
+                $original = $file->getClientOriginalName();
+                $ext = $file->getClientOriginalExtension();
+
+                $md5 = md5($original . time());
+                $name = 'subjects/' . $md5 . '.' . strtolower($ext);
+
+                $info = array(
+                    'path' => $name,
+                    'subject_id' => $id,
+                    'name' => $original,
+                    'type' => strtolower($ext)
+                );
+
+                $documents->fill($info);
+                if ($documents->save()) {
+                    Storage::put($name, File::get($file));
+                }
+            }
+        }
+    }
+
     public function schedule(Request $request) {
         $data = array_filter($request->all());        
         if (!empty($data)) {
@@ -178,6 +207,14 @@ class SubjectsController extends Controller
         $num = rand(0, 100);
         $days = Day::all()->pluck('name', 'id');
         return view('modules.subjects.partials.schedule', compact('days', 'num'));
+    }
+
+    public function deleteDocument(Request $request) {
+        $id = $request->input('id');
+        $document = Document_Subject::find($id);
+        if (Storage::delete($document->path)) {
+            $document->delete();
+        }
     }
 
     public function prepareData($data) {
