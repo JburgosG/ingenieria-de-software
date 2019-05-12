@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\State;
 use App\Events;
+use App\State;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Storage;
 
 class EventsController extends Controller
 {
@@ -25,6 +28,31 @@ class EventsController extends Controller
             return view('modules.events.create', $data);
         }
         return redirect('/');
+    }
+
+    public function store(Request $request) {
+        $event_m = new Events();
+        $data = array_filter($request->all());
+
+        $image = $request->file('image');
+        $original = $image->getClientOriginalName();
+        $ext = $image->getClientOriginalExtension();
+
+        $md5 = md5($original . time());
+        $name = 'events/' . $md5 . '.' . strtolower($ext);
+        $info = array_merge($data, ['image' => $name]);
+
+        $event_m->fill($info);
+        if ($event_m->save()) {
+            Storage::put($name, File::get($image));
+        }
+
+        $msg = 'created';
+        $state = 'success';
+        $web = '/events';
+
+        _notification($state, $msg, 'Evento');
+        return Redirect::To($web)->withInput();
     }
 
     /* --------------------------------------------------------------------- */
