@@ -150,8 +150,8 @@ class SubjectsController extends Controller
                 if (!empty($val)) {
                     $schedule = new Schedule_Subject;
                     $other = [
+                        'day_id' => $val,
                         'end_Time' => $data['end'][$key],
-                        'day_id' => $data['day_id'][$key],
                         'start_Time' => $data['start'][$key]
                     ];
                     $schedule->fill(array_merge($sub, $other));
