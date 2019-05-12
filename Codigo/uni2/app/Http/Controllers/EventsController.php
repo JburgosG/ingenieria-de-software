@@ -55,6 +55,44 @@ class EventsController extends Controller
         return Redirect::To($web)->withInput();
     }
 
+    public function edit($id) {
+        $event = Events::find($id);
+        $data = $this->generalData();
+        $info = array_merge($data, ['event' => $event]);
+        return view('modules.events.edit', $info);
+    }
+
+    public function update($id, Request $request) {
+        $event_m = Events::find($id);
+        $data = array_filter($request->all());
+        $image = $request->file('image');
+
+        if (!empty($image)) {
+            $original = $image->getClientOriginalName();
+            $ext = $image->getClientOriginalExtension();
+
+            $md5 = md5($original . time());
+            $name = 'events/' . $md5 . '.' . strtolower($ext);
+            $img = array('image' => $name);
+
+            Storage::put($name, File::get($image));
+        } else {
+            $img = array('image' => $event_m->image);
+        }
+
+        $info = array_merge($data, $img);
+
+        $event_m->fill($info);
+        $event_m->save();
+
+        $msg = 'edit';
+        $state = 'success';
+        $web = '/events';
+
+        _notification($state, $msg, 'Evento');
+        return Redirect::To($web)->withInput();
+    }
+
     /* --------------------------------------------------------------------- */
 
     public function generalData() {
