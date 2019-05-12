@@ -30,7 +30,10 @@ Route::get('view_subject/{id}', 'SubjectsController@show');
 Route::get('create_user', 'UsersController@create');
 Route::get('create_subject', 'SubjectsController@create');
 
+/* Functions General */
+Route::post('addDays', 'SubjectsController@addDays');
 Route::get('storage/{folder}/{path}', 'MainController@loadimage');
+Route::post('deleteDocument', 'SubjectsController@deleteDocument');
 Route::post('/exists', ['as' => 'exists', 'uses' => 'MainController@exists']);
 Route::get('unregistration/{id}/{subject}', 'SubjectsController@unregistration');
 Route::post('upload', ['as' => 'upload', 'uses' => 'SubjectsController@upload']);
@@ -38,3 +41,7 @@ Route::post('schedule', ['as' => 'schedule', 'uses' => 'SubjectsController@sched
 Route::post('register', ['as' => 'register', 'uses' => 'SubjectsController@register']);
 Route::post('change-pass', ['as' => 'change-pass', 'uses' => 'UsersController@changePassword']);
 Route::post('change-avatar', ['as' => 'change-avatar', 'uses' => 'UsersController@changeAvatar']);
+
+Route::get('/download/{folder}/{path}/{name}', function ($folder, $path, $name) {
+    return response()->download(storage_path('app/' . $folder . '/' . $path), $name);
+});
