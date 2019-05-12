@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -22,7 +23,14 @@ class HomeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {        
-        return view('home');
+    {   
+        $where = ['state_id' => 1];        
+        $events = Events::where($where)->orderBy('date', 'desc')->limit(5)->get();
+
+        $data = array(
+            'events' => $events            
+        );
+
+        return view('home', $data);        
     }
 }
