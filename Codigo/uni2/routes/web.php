@@ -36,6 +36,7 @@ Route::get('create_event', 'EventsController@create');
 Route::get('create_subject', 'SubjectsController@create');
 
 /* Functions General */
+Route::get('getEvents', 'MainController@getEvents');
 Route::post('addDays', 'SubjectsController@addDays');
 Route::post('deleteImage', 'SubjectsController@deleteImage');
 Route::get('storage/{folder}/{path}', 'MainController@loadimage');
