@@ -37,6 +37,7 @@ Route::get('create_subject', 'SubjectsController@create');
 
 /* Functions General */
 Route::post('addDays', 'SubjectsController@addDays');
+Route::post('deleteImage', 'SubjectsController@deleteImage');
 Route::get('storage/{folder}/{path}', 'MainController@loadimage');
 Route::post('deleteDocument', 'SubjectsController@deleteDocument');
 Route::post('/exists', ['as' => 'exists', 'uses' => 'MainController@exists']);

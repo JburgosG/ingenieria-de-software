@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Day;
 use App\User;
 use App\Subject;
+use App\Gallery;
 use App\Activity;
 use App\Student_Subject;
 use App\Document_Subject;
@@ -254,5 +255,14 @@ class SubjectsController extends Controller
         }
 
         return ['students' => $students, 'registered' => $registered];
+    }
+
+    public function deleteImage(Request $request) {
+        $id = $request->input('id');
+        $image = Gallery::find($id);
+        Storage::delete('gallery/' . $image->name . 's.' . $image->type);
+        Storage::delete('gallery/' . $image->name . 'g.' . $image->type);
+        Storage::delete('gallery/' . $image->name . '.' . $image->type);
+        $image->delete();
     }
 }
