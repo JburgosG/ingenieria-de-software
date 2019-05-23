@@ -16,6 +16,29 @@
 	            </div>
 	        </div>
 	        <div class="col-lg-5">
+				<div class="ibox float-e-margins">
+					<div class="ibox-content">
+						<div class="carousel slide" id="carousel1">
+							<div class="carousel-inner">
+								@forelse($gallery as $key => $row)
+								<div class="item {{ $key == 0 ? 'active' : null }}">
+									<img alt="image" src="{{ url('storage/gallery/' . $row->name . 'g.' . $row->type) }}">
+								</div>
+								@empty
+								<div class="item active">
+									<img alt="image" class="img-responsive" src="{{ url('storage/gallery/p_big3.jpg') }}">
+								</div>
+								@endforelse
+							</div>
+							<a data-slide="prev" href="#carousel1" class="left carousel-control">
+								<span class="icon-prev"></span>
+							</a>
+							<a data-slide="next" href="#carousel1" class="right carousel-control">
+								<span class="icon-next"></span>
+							</a>
+						</div>
+					</div>
+				</div>
 	        	<div class="ibox float-e-margins">
 	                <div class="ibox-title">
 	                    <h5>Últimos eventos</h5>
