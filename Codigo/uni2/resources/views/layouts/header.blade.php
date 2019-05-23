@@ -82,6 +82,12 @@
                     <span class="nav-label">Calendario</span>
                 </a>
             </li>
+            <li>
+                <a href="{{ url('/gallery') }}">
+                    <i class="fa fa-picture-o"></i>
+                    <span class="nav-label">Galeria</span>
+                </a>
+            </li>
         </ul>
     </div>
 </nav>

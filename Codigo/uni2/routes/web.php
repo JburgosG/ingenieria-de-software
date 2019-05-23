@@ -22,6 +22,7 @@ Route::resource('activity', 'ActivitiesController');
 
 /* Modules */
 Route::get('events', 'EventsController@index');
+Route::get('gallery', 'GalleryController@index');
 Route::get('subjects', 'SubjectsController@index');
 Route::get('calendar', 'CalendarController@index');
 
