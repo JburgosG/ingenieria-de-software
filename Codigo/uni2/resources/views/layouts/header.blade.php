@@ -88,6 +88,15 @@
                     <span class="nav-label">Galeria</span>
                 </a>
             </li>
+            @if(!empty(_important()))
+            @php $important = _important() @endphp
+            <li class="landing_link">
+                <a data-toggle="modal" data-target="#viewEvent_{{ $important->id }}" id="event-important">
+                    <i class="fa fa-star"></i>
+                    <span class="nav-label">Evento Destacado</span>
+                </a>
+            </li>
+            @endif
         </ul>
     </div>
 </nav>
