@@ -68,6 +68,20 @@
                 </ul>
             </li>
             @endif
+            @if(Auth::user()->group->id != 1)
+            <li>
+                <a href="{{ url('/subjects') }}">
+                    <i class="fa fa-book"></i>
+                    <span class="nav-label">Mis asignaturas</span>
+                </a>
+            </li>
+            @endif
+            <li>
+                <a href="{{ url('/calendar') }}">
+                    <i class="fa fa-calendar"></i>
+                    <span class="nav-label">Calendario</span>
+                </a>
+            </li>
         </ul>
     </div>
 </nav>

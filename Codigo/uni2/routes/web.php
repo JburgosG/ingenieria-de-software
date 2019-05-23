@@ -23,6 +23,7 @@ Route::resource('activity', 'ActivitiesController');
 /* Modules */
 Route::get('events', 'EventsController@index');
 Route::get('subjects', 'SubjectsController@index');
+Route::get('calendar', 'CalendarController@index');
 
 /* View */
 Route::get('profile/{id}', 'UsersController@show');
