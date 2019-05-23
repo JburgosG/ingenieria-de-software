@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
 
@@ -28,5 +29,21 @@ class MainController extends Controller
             }
         }
         echo json_encode($ok);
+    }
+
+    public function getEvents() {
+
+        $data = array();
+        $events = Events::all();
+        if (!empty($events)) {
+            foreach ($events as $val) {
+                $data[] = [
+                    'title' => $val->name,
+                    'start' => $val->date,
+                ];
+            }
+        }
+
+        return json_encode($data);
     }
 }
