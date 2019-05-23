@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Events;
+use App\Gallery;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -24,11 +25,13 @@ class HomeController extends Controller
      */
     public function index()
     {   
-        $where = ['state_id' => 1];        
+        $where = ['state_id' => 1];
+        $gallery = Gallery::orderBy('created_at', 'desc')->limit(5)->get();
         $events = Events::where($where)->orderBy('date', 'desc')->limit(5)->get();
 
         $data = array(
-            'events' => $events            
+            'events' => $events,
+            'gallery' => $gallery
         );
 
         return view('home', $data);        

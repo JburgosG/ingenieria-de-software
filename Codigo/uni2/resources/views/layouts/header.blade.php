@@ -68,6 +68,35 @@
                 </ul>
             </li>
             @endif
+            @if(Auth::user()->group->id != 1)
+            <li>
+                <a href="{{ url('/subjects') }}">
+                    <i class="fa fa-book"></i>
+                    <span class="nav-label">Mis asignaturas</span>
+                </a>
+            </li>
+            @endif
+            <li>
+                <a href="{{ url('/calendar') }}">
+                    <i class="fa fa-calendar"></i>
+                    <span class="nav-label">Calendario</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{ url('/gallery') }}">
+                    <i class="fa fa-picture-o"></i>
+                    <span class="nav-label">Galeria</span>
+                </a>
+            </li>
+            @if(!empty(_important()))
+            @php $important = _important() @endphp
+            <li class="landing_link">
+                <a data-toggle="modal" data-target="#viewEvent_{{ $important->id }}" id="event-important">
+                    <i class="fa fa-star"></i>
+                    <span class="nav-label">Evento Destacado</span>
+                </a>
+            </li>
+            @endif
         </ul>
     </div>
 </nav>
@@ -106,5 +135,30 @@
 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
     {{ csrf_field() }}
 </form>
+
+{{-- Modal Important Event --}}
+@if(!empty(_important()))
+<div class="modal inmodal" id="viewEvent_{{ $important->id }}" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content animated bounceInRight">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Cerrar</span>
+                </button>
+                <h4 class="modal-title">{{ $important->name }}</h4>
+                <div class="hr-line-dashed"></div>
+                <img src="{{ url('storage/' . $important->image) }}" class="img-responsive img-thumbnail img-event">
+            </div>
+            <div class="modal-body">
+                <p>{{ $important->description }}</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-white" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+@endif
 
 @endsection

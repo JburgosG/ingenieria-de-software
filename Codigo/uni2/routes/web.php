@@ -22,7 +22,9 @@ Route::resource('activity', 'ActivitiesController');
 
 /* Modules */
 Route::get('events', 'EventsController@index');
+Route::get('gallery', 'GalleryController@index');
 Route::get('subjects', 'SubjectsController@index');
+Route::get('calendar', 'CalendarController@index');
 
 /* View */
 Route::get('profile/{id}', 'UsersController@show');
@@ -35,6 +37,7 @@ Route::get('create_subject', 'SubjectsController@create');
 
 /* Functions General */
 Route::post('addDays', 'SubjectsController@addDays');
+Route::post('deleteImage', 'SubjectsController@deleteImage');
 Route::get('storage/{folder}/{path}', 'MainController@loadimage');
 Route::post('deleteDocument', 'SubjectsController@deleteDocument');
 Route::post('/exists', ['as' => 'exists', 'uses' => 'MainController@exists']);
@@ -42,6 +45,7 @@ Route::get('unregistration/{id}/{subject}', 'SubjectsController@unregistration')
 Route::post('upload', ['as' => 'upload', 'uses' => 'SubjectsController@upload']);
 Route::post('schedule', ['as' => 'schedule', 'uses' => 'SubjectsController@schedule']);
 Route::post('register', ['as' => 'register', 'uses' => 'SubjectsController@register']);
+Route::post('upload-gallery', ['as' => 'upload-gallery', 'uses' => 'GalleryController@upload']);
 Route::post('change-pass', ['as' => 'change-pass', 'uses' => 'UsersController@changePassword']);
 Route::post('change-avatar', ['as' => 'change-avatar', 'uses' => 'UsersController@changeAvatar']);
 
