@@ -140,6 +140,36 @@ class SubjectsController extends Controller
         }
     }
 
+    public function edit($id) {
+        $subject = Subject::find($id);
+        $data = $this->general_data();
+        $info = array_merge($data, ['subject' => $subject]);
+        return view('modules.subjects.edit', $info);
+    }
+
+    public function update($id, Request $request) {
+        $subject_m = Subject::find($id);
+        $data = array_filter($request->all());
+        $subject = $this->prepareData($data);
+
+        $subject_m->fill($subject);
+        if ($subject_m->save()) {
+            
+        }
+
+        $msg = 'edit';
+        $state = 'success';
+        $web = '/subjects';
+
+        _notification($state, $msg, 'Asignatura');
+        return Redirect::To($web)->withInput();
+    }
+
+    public function destroy($id) {
+        $subject_m = Subject::findOrFail($id);
+        echo (Subject::destroy($id)) ? true : false;
+    }
+
     public function upload(Request $request) {
         $data = array_filter($request->all());
 
